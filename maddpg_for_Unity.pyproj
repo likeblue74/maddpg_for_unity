@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ae0f1a02-2343-4f21-9f32-f2394b072378}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>experiments\train.py</StartupFile>
+    <SearchPath>maddpg\trainer;maddpg\common;..\atari-py:$PYTHONPATH;unityagents;communicator_objects</SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <IsWindowsApplication>False</IsWindowsApplication>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="communicator_objects\__pycache__\agent_action_proto_pb2.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\agent_action_proto_pb2.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\agent_info_proto_pb2.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\agent_info_proto_pb2.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\brain_parameters_proto_pb2.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\brain_parameters_proto_pb2.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\brain_type_proto_pb2.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\brain_type_proto_pb2.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\command_proto_pb2.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\command_proto_pb2.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\engine_configuration_proto_pb2.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\engine_configuration_proto_pb2.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\environment_parameters_proto_pb2.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\environment_parameters_proto_pb2.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\header_pb2.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\header_pb2.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\resolution_proto_pb2.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\resolution_proto_pb2.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\space_type_proto_pb2.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\space_type_proto_pb2.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\unity_input_pb2.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\unity_input_pb2.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\unity_message_pb2.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\unity_message_pb2.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\unity_output_pb2.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\unity_output_pb2.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\unity_rl_initialization_input_pb2.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\unity_rl_initialization_input_pb2.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\unity_rl_initialization_output_pb2.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\unity_rl_initialization_output_pb2.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\unity_rl_input_pb2.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\unity_rl_input_pb2.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\unity_rl_output_pb2.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\unity_rl_output_pb2.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\unity_to_external_pb2.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\unity_to_external_pb2.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\unity_to_external_pb2_grpc.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\unity_to_external_pb2_grpc.cpython-36.pyc" />
+    <Content Include="communicator_objects\__pycache__\__init__.cpython-35.pyc" />
+    <Content Include="communicator_objects\__pycache__\__init__.cpython-36.pyc" />
+    <Content Include="LICENSE.txt" />
+    <Content Include="maddpg.egg-info\dependency_links.txt" />
+    <Content Include="maddpg.egg-info\requires.txt" />
+    <Content Include="maddpg.egg-info\SOURCES.txt" />
+    <Content Include="maddpg.egg-info\top_level.txt" />
+    <Content Include="unityagents\__pycache__\brain.cpython-35.pyc" />
+    <Content Include="unityagents\__pycache__\brain.cpython-36.pyc" />
+    <Content Include="unityagents\__pycache__\communicator.cpython-36.pyc" />
+    <Content Include="unityagents\__pycache__\curriculum.cpython-35.pyc" />
+    <Content Include="unityagents\__pycache__\curriculum.cpython-36.pyc" />
+    <Content Include="unityagents\__pycache__\environment.cpython-35.pyc" />
+    <Content Include="unityagents\__pycache__\environment.cpython-36.pyc" />
+    <Content Include="unityagents\__pycache__\exception.cpython-35.pyc" />
+    <Content Include="unityagents\__pycache__\exception.cpython-36.pyc" />
+    <Content Include="unityagents\__pycache__\rpc_communicator.cpython-36.pyc" />
+    <Content Include="unityagents\__pycache__\socket_communicator.cpython-36.pyc" />
+    <Content Include="unityagents\__pycache__\__init__.cpython-35.pyc" />
+    <Content Include="unityagents\__pycache__\__init__.cpython-36.pyc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="communicator_objects\agent_action_proto_pb2.py" />
+    <Compile Include="communicator_objects\agent_info_proto_pb2.py" />
+    <Compile Include="communicator_objects\brain_parameters_proto_pb2.py" />
+    <Compile Include="communicator_objects\brain_type_proto_pb2.py" />
+    <Compile Include="communicator_objects\command_proto_pb2.py" />
+    <Compile Include="communicator_objects\engine_configuration_proto_pb2.py" />
+    <Compile Include="communicator_objects\environment_parameters_proto_pb2.py" />
+    <Compile Include="communicator_objects\header_pb2.py" />
+    <Compile Include="communicator_objects\resolution_proto_pb2.py" />
+    <Compile Include="communicator_objects\space_type_proto_pb2.py" />
+    <Compile Include="communicator_objects\unity_input_pb2.py" />
+    <Compile Include="communicator_objects\unity_message_pb2.py" />
+    <Compile Include="communicator_objects\unity_output_pb2.py" />
+    <Compile Include="communicator_objects\unity_rl_initialization_input_pb2.py" />
+    <Compile Include="communicator_objects\unity_rl_initialization_output_pb2.py" />
+    <Compile Include="communicator_objects\unity_rl_input_pb2.py" />
+    <Compile Include="communicator_objects\unity_rl_output_pb2.py" />
+    <Compile Include="communicator_objects\unity_to_external_pb2.py" />
+    <Compile Include="communicator_objects\unity_to_external_pb2_grpc.py" />
+    <Compile Include="communicator_objects\__init__.py" />
+    <Compile Include="experiments\train.py" />
+    <Compile Include="experiments\train_unityml.py" />
+    <Compile Include="maddpg\common\distributions.py" />
+    <Compile Include="maddpg\common\tf_util.py" />
+    <Compile Include="maddpg\trainer\maddpg.py" />
+    <Compile Include="maddpg\trainer\replay_buffer.py" />
+    <Compile Include="maddpg\__init__.py" />
+    <Compile Include="setup.py" />
+    <Compile Include="unityagents\brain.py" />
+    <Compile Include="unityagents\communicator.py" />
+    <Compile Include="unityagents\curriculum.py" />
+    <Compile Include="unityagents\environment.py" />
+    <Compile Include="unityagents\exception.py" />
+    <Compile Include="unityagents\rpc_communicator.py" />
+    <Compile Include="unityagents\socket_communicator.py" />
+    <Compile Include="unityagents\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="communicator_objects\" />
+    <Folder Include="communicator_objects\__pycache__\" />
+    <Folder Include="experiments" />
+    <Folder Include="maddpg" />
+    <Folder Include="maddpg.egg-info" />
+    <Folder Include="maddpg\common" />
+    <Folder Include="maddpg\trainer" />
+    <Folder Include="unityagents\" />
+    <Folder Include="unityagents\__pycache__\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>
