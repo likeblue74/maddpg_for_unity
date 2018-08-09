@@ -5,15 +5,16 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{ae0f1a02-2343-4f21-9f32-f2394b072378}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>experiments\train.py</StartupFile>
-    <SearchPath>maddpg\trainer;maddpg\common;..\atari-py:$PYTHONPATH;unityagents;communicator_objects</SearchPath>
+    <StartupFile>experiments\train_unityml.py</StartupFile>
+    <SearchPath>..\atari-py:$PYTHONPATH;unityagents;communicator_objects</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <InterpreterId />
+    <InterpreterId>Global|ContinuumAnalytics|Anaconda36-64</InterpreterId>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <IsWindowsApplication>False</IsWindowsApplication>
+    <CommandLineArguments>--scenario=D:\Deeplearning\UnityML_Env\gridworld\gw_3\DLC_RL1 --num-units=3</CommandLineArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -103,6 +104,9 @@
     <Compile Include="communicator_objects\__init__.py" />
     <Compile Include="experiments\train.py" />
     <Compile Include="experiments\train_unityml.py" />
+    <Compile Include="experiments\unitymodel.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="maddpg\common\distributions.py" />
     <Compile Include="maddpg\common\tf_util.py" />
     <Compile Include="maddpg\trainer\maddpg.py" />
@@ -128,6 +132,9 @@
     <Folder Include="maddpg\trainer" />
     <Folder Include="unityagents\" />
     <Folder Include="unityagents\__pycache__\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|ContinuumAnalytics|Anaconda36-64" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>

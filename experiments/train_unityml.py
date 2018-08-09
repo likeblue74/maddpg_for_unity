@@ -7,7 +7,7 @@ import time
 import pickle
 
 import maddpg.common.tf_util as U
-from maddpg.trainer.maddpg import MADDPGAgentTrainer
+from unitymodel import MADDPGUnityAgentTrainer
 import tensorflow.contrib.layers as layers
 
 from unityagents import UnityEnvironment, UnityEnvironmentException, UnityException, AllBrainInfo,BrainInfo,BrainParameters
@@ -62,17 +62,18 @@ def make_env(scenario_name, arglist, benchmark=False):
 
     return env
 
-def get_trainers(env, num_adversaries, obs_shape_n, arglist):
+def get_trainers(env, num_adversaries, obs_shape_n,action_space_n, arglist):
     trainers = []
     model = mlp_model
-    trainer = MADDPGAgentTrainer
+    trainer = MADDPGUnityAgentTrainer
+
     for i in range(num_adversaries):
         trainers.append(trainer(
-            "agent_%d" % i, model, obs_shape_n, env.action_space, i, arglist,
+            "agent_%d" % i, model, obs_shape_n, action_space_n, i, arglist,
             local_q_func=(arglist.adv_policy=='ddpg')))
-    for i in range(num_adversaries, env.n):
+    for i in range(num_adversaries, num_adversaries+len(obs_shape_n)):
         trainers.append(trainer(
-            "agent_%d" % i, model, obs_shape_n, env.action_space, i, arglist,
+            "agent_%d" % i, model, obs_shape_n, action_space_n, i, arglist,
             local_q_func=(arglist.good_policy=='ddpg')))
     return trainers
 
@@ -81,6 +82,8 @@ def train(arglist):
     with U.single_threaded_session():
         # Create environment
         env:UnityEnvironment = make_env(arglist.scenario, arglist, arglist.benchmark)
+
+        default_brain=env.brain_names[0]
     
         brain_param:BrainParameters = env.brains[env.brain_names[0]]
         # Create agent trainers
@@ -88,14 +91,15 @@ def train(arglist):
         obs_size = brain_param.vector_observation_space_size*brain_param.num_stacked_vector_observations
         action_size = brain_param.vector_action_space_size
         #obs_shape_n = [env.observation_space[i].shape for i in range(env.n)]
-
-        for i in range(arglist.num-units):
-            obs_shape_n[i] = obs_size
-            action_n[i] = action_size
+        obs_shape_n=[]
+        action_n=[]
+        for i in range(arglist.num_units):
+            obs_shape_n.append((obs_size,))
+            action_n.append(action_size)
 
 
        
-        trainers = get_trainers(env, num_adversaries, obs_shape_n, arglist)
+        trainers = get_trainers(env, 0, obs_shape_n,action_n, arglist)
         print('Using good policy {} and adv policy {}'.format(arglist.good_policy, arglist.adv_policy))
 
         # Initialize
@@ -124,7 +128,9 @@ def train(arglist):
             # get action
             action_n = [agent.action(obs) for agent, obs in zip(trainers,obs_n)]
             # environment step
-            new_obs_n, rew_n, done_n, info_n = env.step(action_n)
+
+            env_info = env(action_n)[default_brain]
+            #new_obs_n, rew_n, done_n, info_n = env.step(action_n)
             episode_step += 1
             done = all(done_n)
             terminal = (episode_step >= arglist.max_episode_len)

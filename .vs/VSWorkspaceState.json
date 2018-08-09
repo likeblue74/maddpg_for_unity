@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\experiments",
+    "\\maddpg",
+    "\\maddpg\\common",
+    "\\maddpg\\trainer",
+    "\\unityagents"
   ],
+  "SelectedNode": "\\experiments\\train_unityml.py",
   "PreviewInSolutionExplorer": false
 }
