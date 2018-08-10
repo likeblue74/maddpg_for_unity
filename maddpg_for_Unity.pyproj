@@ -14,7 +14,7 @@
     <InterpreterId>Global|ContinuumAnalytics|Anaconda36-64</InterpreterId>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <IsWindowsApplication>False</IsWindowsApplication>
-    <CommandLineArguments>--scenario=D:\Deeplearning\UnityML_Env\gridworld\gw_3\DLC_RL1 --num-units=3</CommandLineArguments>
+    <CommandLineArguments>--scenario=E:\GitHub\UnityML_Env\gridworld\gw_obc_v2\DLC_RL1 --num-units=3</CommandLineArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />

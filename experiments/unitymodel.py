@@ -4,7 +4,7 @@ import random
 import tensorflow as tf
 import maddpg.common.tf_util as U
 
-from maddpg.common.distributions import make_pdtype
+from maddpg.common.distributions import make_pdtype,SoftCategoricalPdType
 from maddpg import AgentTrainer
 from maddpg.trainer.replay_buffer import ReplayBuffer
 
@@ -29,7 +29,7 @@ def make_update_exp(vals, target_vals):
 def p_train(make_obs_ph_n, act_space_n, p_index, p_func, q_func, optimizer, grad_norm_clipping=None, local_q_func=False, num_units=64, scope="trainer", reuse=None):
     with tf.variable_scope(scope, reuse=reuse):
         # create distribtuions
-        act_pdtype_n = [make_pdtype(act_space) for act_space in act_space_n]
+        act_pdtype_n = [SoftCategoricalPdType(act_space) for act_space in act_space_n]
 
         # set up placeholders
         obs_ph_n = make_obs_ph_n
