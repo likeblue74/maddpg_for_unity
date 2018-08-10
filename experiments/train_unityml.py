@@ -80,12 +80,14 @@ def get_trainers(env, num_adversaries, obs_shape_n,action_space_n, arglist):
 
 def train(arglist):
     with U.single_threaded_session():
+
+        num_adversaries = 0
         # Create environment
         env:UnityEnvironment = make_env(arglist.scenario, arglist, arglist.benchmark)
 
         default_brain=env.brain_names[0]
     
-        brain_param:BrainParameters = env.brains[env.brain_names[0]]
+        brain_param:BrainParameters = env.brains[default_brain]
         # Create agent trainers
 
         obs_size = brain_param.vector_observation_space_size*brain_param.num_stacked_vector_observations
@@ -113,12 +115,15 @@ def train(arglist):
             U.load_state(arglist.load_dir)
 
         episode_rewards = [0.0]  # sum of rewards for all agents
-        agent_rewards = [[0.0] for _ in range(env.n)]  # individual agent reward
+        agent_rewards = [[0.0] for _ in range(arglist.num_units)]  # individual agent reward
         final_ep_rewards = []  # sum of rewards for training curve
         final_ep_ag_rewards = []  # agent rewards for training curve
         agent_info = [[[]]]  # placeholder for benchmarking info
         saver = tf.train.Saver()
-        obs_n = env.reset()
+
+        env_info =  env.reset(train_mode=True)[default_brain]
+        obs_n = env_info.vector_observations
+        #obs_n = env.reset()
         episode_step = 0
         train_step = 0
         t_start = time.time()
@@ -127,9 +132,19 @@ def train(arglist):
         while True:
             # get action
             action_n = [agent.action(obs) for agent, obs in zip(trainers,obs_n)]
+
+            action = np.zeros(shape=[len(action_n[:]),1])
+
+            for i in range(len(action[:])):
+                action[i][0] = np.random.choice(5,1,action_n[i].all)
+
             # environment step
 
-            env_info = env(action_n)[default_brain]
+            env_info = env.step(vector_action=action)[default_brain]
+            new_obs_n = env_info.vector_observations
+            rew_n = env_info.rewards
+            done_n = env_info.local_done
+
             #new_obs_n, rew_n, done_n, info_n = env.step(action_n)
             episode_step += 1
             done = all(done_n)
@@ -144,7 +159,8 @@ def train(arglist):
                 agent_rewards[i][-1] += rew
 
             if done or terminal:
-                obs_n = env.reset()
+                env_info =  env.reset(train_mode=True)[default_brain]
+                obs_n = env_info.vector_observations
                 episode_step = 0
                 episode_rewards.append(0)
                 for a in agent_rewards:
@@ -154,6 +170,8 @@ def train(arglist):
             # increment global step counter
             train_step += 1
 
+
+            arglist.benchmark = False
             # for benchmarking learned policies
             if arglist.benchmark:
                 for i, info in enumerate(info_n):

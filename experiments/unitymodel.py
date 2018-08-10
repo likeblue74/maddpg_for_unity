@@ -78,6 +78,8 @@ def q_train(make_obs_ph_n, act_space_n, q_index, q_func, optimizer, grad_norm_cl
         # create distribtuions
         #act_pdtype_n = [make_pdtype(act_space) for act_space in act_space_n]
 
+        act_pdtype_n = [SoftCategoricalPdType(act_space) for act_space in act_space_n]
+
         # set up placeholders
         obs_ph_n = make_obs_ph_n
         act_ph_n = [act_pdtype_n[i].sample_placeholder([None], name="action"+str(i)) for i in range(len(act_space_n))]
