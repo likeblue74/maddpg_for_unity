@@ -136,8 +136,7 @@ def train(arglist):
             action = np.zeros(shape=[len(action_n[:]),1])
 
             for i in range(len(action[:])):
-                action[i][0] = np.random.choice(5,1,action_n[i].all)
-
+                action[i][0] =  np.argmax(action_n[i])
             # environment step
 
             env_info = env.step(vector_action=action)[default_brain]
